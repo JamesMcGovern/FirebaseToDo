@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import SignOut from './SignOut'
 import SignIn from './SignIn'
 import AddTodoItem from './add-todo-item'
+import WelcomeModal from './welcome-modal'
 import firebase from './firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
@@ -53,6 +54,7 @@ const ToDo = () => {
     if (user){
         return (
             <section>
+                <WelcomeModal userId={user.uid}/>
                 <header>Hello, {user.displayName}! <SignOut /> </header>
                 <h1>To-Do List</h1>
                 <div>

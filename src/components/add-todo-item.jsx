@@ -8,17 +8,28 @@ const AddTodoItem = () => {
     function onSubmit(e) {
         e.preventDefault()
 
-        firebase
-            .firestore()
-            .collection('items')
-            .add({
-                name,
-                priority: parseInt(priority)
-            })
-            .then(() => {
-                setName('')
-                setPriority('')
-            })
+        const nameCheck = firebase.functions().httpsCallable('userCheck');
+
+        nameCheck(name)
+        .then((result) => {
+            if (result){
+                firebase
+                    .firestore()
+                    .collection('items')
+                    .add({
+                        name,
+                        priority: parseInt(priority)
+                    })
+                    .then(() => {
+                        setName('')
+                        setPriority('')
+                    })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
     }
 
     return (

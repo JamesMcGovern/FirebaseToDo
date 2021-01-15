@@ -29,7 +29,7 @@ body {
   /*display: flex;
   flex-direction: column;
   justify-content: center;*/
-  padding-top: 70px;
+  padding-top: 10vh;
   min-height: 90vh;
   background-color: rgb(40, 37, 53);
   color: white;
@@ -147,4 +147,29 @@ p {
 .escapeBtn {
   padding: revert;
   background-color: red;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 20%;
+  top: 15%;
+  width: 60%;
+  height: 70%;
+  overflow: auto;
+  text-align: -webkit-center;
+  background-color: #152c5c;
+  border: 1px solid grey;
+  color: white;
+}
+
+.closeModal {
+  position: relative;
+  margin-top: 0;
+  margin-right: 5px;
+  text-align: right;
+  cursor: pointer;
+  color: red;
+  text-emphasis: emphasis;
+  font-size: 25px;
 }
